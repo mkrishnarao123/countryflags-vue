@@ -1,37 +1,45 @@
 {
-  "name": "countryflags-vue",
-  "private": false,
-  "version": "0.0.8",
-  "description": "Country Flags npm package with vue 3",
-  "type": "module",
-  "main": "./dist/country-flags-vue.umd.cjs",
-  "module": "./dist/country-flags-vue.es.js",
-  "homepage": "https://github.com/saikumar001-sky/countryflags-vue",
-  "keywords": [
-    "vue",
-    "vue3",
-    "component",
-    "library",
-    "vite",
-    "country",
-    "Flags",
-    "flags-rounded",
-    "countryflags",
-    "flag"
-  ],
-  "files": [
-    "dist"
-  ],
+  "name": "country-flags-krishnarao",
+  "version": "0.1.0",
+  "description": "A lightweight library for displaying country flags",
+  "main": "./dist/country-flags-lib.umd.cjs",
+  "module": "./dist/country-flags-lib.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/country-flags-lib.js",
+      "require": "./dist/country-flags-lib.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc --emitDeclarationOnly && vite build",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "country",
+    "flags",
+    "react",
+    "library",
+    "typescript"
+  ],
+  "author": "Krishnarao",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4"
   },
   "peerDependencies": {
-    "vue": "^3.4.29"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
-    "vite": "^5.3.1"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   }
 }

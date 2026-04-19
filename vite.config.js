@@ -1,26 +1,21 @@
+import { resolve } from "path";
 import { defineConfig } from "vite";
-import path from 'path'
-import vue from "@vitejs/plugin-vue";
+import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [react()],
   build: {
     lib: {
-      // tell the build process to treat this project as library
-      entry: path.resolve(__dirname, "src/App.vue"),
-      name: "country-flags-vue",
-      fileName: (format)=>`country-flags-vue.${format}.js`,
+      entry: resolve(__dirname, "src/index.tsx"),
+      name: "CountryFlagsLib",
+      fileName: (format) => `country-flags-lib.${format === "es" ? "js" : "umd.cjs"}`,
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ["vue"],
+      external: ["react", "react-dom"],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
         globals: {
-          vue: "Vue",
+          react: "React",
+          "react-dom": "ReactDOM",
         },
       },
     },
